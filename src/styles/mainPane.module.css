@@ -1,13 +1,39 @@
 .container {
-  width: 80%;
-  height: auto;
+  width: 342px;
+  height: 397px;
   max-width: 900px;
   text-align: center;
   margin: auto;
   margin-top: 1rem;
   padding: 30px 0;
-  border-radius: 10px;
-  box-shadow: 0px 0px 30px 30px rgba(30, 136, 229, 0.2);
+  border-radius: 15px;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.container2 {
+  width: 340px;
+  height: 192px;
+  max-width: 900px;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 40px 20px;
+  border-radius: 15px;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.container3 {
+  width: 340px;
+  max-height: 926px;
+  max-width: 926px;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 40px 20px;
 }
 
 .content {
@@ -18,6 +44,273 @@
   gap: 1rem;
   justify-content: center;
 }
+
+.subtitle {
+  color: var(--System-Label-Primary, #000);
+    text-align: center;
+    font-family: "Source Sans Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    /* 129.412% */
+    letter-spacing: -0.4px;
+}
+
+.subtext {
+  color: var(--Colors-Grey-Blue, #8EC1DD);
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 0 55px;
+}
+
+.subtext1 {
+  font-family: Manrope;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 800;
+    padding: 0 55px;
+    line-height: normal;
+    background: var(--Cool-Gray-Gradient, linear-gradient(180deg, #111827 0%, #6B7280 100%));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+}
+
+.subtext2 {
+  color: #000;
+  
+    font-family: "Source Sans Pro";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+.subtext3 {
+  color: #000;
+  font-family: "Source Sans Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.51px;
+  padding: 10px 0px;
+}
+
+.subtest4 {
+    color: #000;
+    font-family: "Source Sans Pro";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-transform: uppercase;
+    opacity: 0.3;
+}
+
+.subtest5 {
+  color: var(--event-ease-main-color-text-light, #1B1212);
+    text-align: center;
+    /* Snapay/Headline/Title */
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+}
+
+
+
+.subtext6 {
+  color: var(--snapay-main-color-text-light, #120C0C);
+    /* Snapay/Headline/H4 */
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    padding: 10px;
+    /* 40px */
+    
+}
+
+.subtext7 {
+  color: var(--snapay-systems-body-light, #5C5C5C);
+    /* Snapay/Body/Body (L) */
+    font-family: "Plus Jakarta Sans";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: start;
+    /* 21px */
+}
+
+.box1 {
+  padding: 10px;
+border-radius: 24px 24px 0px 0px;
+  border-top: 2px solid #FF6961;
+  border-right: 2px solid #FF6961;
+  border-left: 2px solid #FF6961;
+  background: var(--snapay-main-color-background-light, #F3F3F3);
+}
+
+
+/* security page */
+.subtext8 {
+  color: #000;
+  
+    /* Snapay/Headline/Title */
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    text-align: start;
+    /* 23.4px */
+}
+
+.subtext9 {
+color: var(--snapay-systems-body-light, #5C5C5C);
+  /* Snapay/Body/Body (L) */
+  font-family: "Plus Jakarta Sans";
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  text-align: start;
+  /* 21px */
+}
+
+
+
+.button1 {
+  display: flex;
+  width: 176px;
+    height: 50px;
+    padding: 3px 0px;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    border-radius: 12px;
+      background: #CACACA;
+}
+
+.button2 {
+  display: flex;
+    width: 176px;
+  height: 50px;
+  padding: 3px 0px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 12px;
+  background: #CACACA;
+}
+
+.button3 {
+  display: flex;
+    width: 100%;
+    padding: 16px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+      background: var(--Snapay-Main-Color-Primary, #5250A8);
+      box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.30);
+}
+
+.button4 {
+  display: flex;
+    width: 92px;
+  
+    padding: 24px 10px;
+   color: black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  
+    flex-shrink: 0;
+    border-radius: 8px;
+    
+      background: var(--snapay-main-color-background-2-light, #FFF);
+}
+
+.sliderColor {
+  border-radius: 44px;
+    background: linear-gradient(90deg, #4792F2 10.89%, #65DB7C 23.27%, #F5E753 39.37%, #E63A52 59.11%, #75212D 76.86%);
+}
+
+
+.modalContainer {
+  width: 400px;
+    height: 300px;
+    border-radius: 8px;
+      background: var(--snapay-main-color-background-2-light, #FFF); 
+}
+
+.modalTitle {
+  color: var(--snapay-main-color-text-light, #120C0C);
+    text-align: center;
+    /* Snapay/Headline/Title */
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    /* 23.4px */
+}
+
+.modalTextSub {
+  color: var(--snapay-systems-body-light, #5C5C5C);
+  /* Snapay/Body/Title (S) */
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  /* 16.8px */
+}
+
+.modalTextValue {
+  color: var(--snapay-main-color-text-light, #120C0C);
+    /* Snapay/Body/Title (S) */
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    /* 16.8px */
+}
+
+.modalButton {
+  display: flex;
+  color:white;
+    width: 182px;
+    padding: 16px 0px;
+    justify-content: center;
+    align-items: center;
+  border-radius: 8px;
+    background: var(--Snapay-Main-Color-Primary, #5250A8);
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.30);
+}
+
+.modalButton2 {
+  display: flex;
+color: var(--snapay-systems-body-light, #5C5C5C);
+  width: 182px;
+  padding: 16px 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.30);
+}
+
 
 @media (width < 768px) {
   .container {

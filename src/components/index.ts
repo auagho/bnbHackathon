@@ -4,3 +4,7 @@ export * from "./Footer";
 export * from "./Header";
 export * from "./MainPane";
 export * from "./InfoText";
+export * from "./InputPad";
+export * from "./Successful";
+export * from "./SecurityCode";
+export * from "./Modal";
