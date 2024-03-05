@@ -1,9 +1,10 @@
 "use client";
 import { type FC } from "react";
 
-import { HStack, Heading } from "@chakra-ui/react";
+import { HStack, Heading, Button } from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
+import Link from "next/link";
 
 import { useWindowSize } from "@/hooks/useWindowSize";
 
@@ -25,9 +26,13 @@ const Header: FC = () => {
       <HStack>
         <Image src={logo.src} alt="logo" width={45} height={45} />
         {!isTablet && (
-          <Heading as="h1" fontSize={"1.5rem"} className="text-shadow">
-            Lucia
-          </Heading>
+          <Link href="/home">
+            <Button style={{ background: 0, border: 0 }}>
+              <Heading as="h1" fontSize={"1.5rem"} className="text-shadow">
+                Lucia
+              </Heading>
+            </Button>
+          </Link>
         )}
       </HStack>
 
