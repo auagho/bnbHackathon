@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Box, Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
@@ -14,6 +14,19 @@ import backback from "../../assets/backback.png";
 import energe from "../../assets/energe.png";
 
 export default function InputPad() {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleButtonClick = (value) => {
+    setInputValue((prevValue) => prevValue + value);
+  };
+
+  const handleDelete = () => {
+    setInputValue((prevValue) => {
+      // inputValue의 마지막 문자를 제거합니다.
+      const newValue = prevValue.slice(0, -1);
+      return newValue;
+    });
+  };
   return (
     <Box className={styles.container3} style={{ padding: "10px" }}>
       <Flex>
@@ -48,51 +61,96 @@ export default function InputPad() {
       <Flex className={styles.box1} style={{ width: "100%" }} flexDirection="column" gap="10px">
         <Box className={styles.subtext8}>Customer ID</Box>
         <Box>
-          <Input placeholder="Serial number" />
+          <Input
+            placeholder="Serial number"
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
         </Box>
         <Box>
           <SellNowModal />
         </Box>
         <Flex flexDirection="column" gap="10px">
           <Flex gap="10px">
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("1")}
+            >
               1
             </Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("2")}
+            >
               2
             </Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("3")}
+            >
               3
             </Button>
           </Flex>
           <Flex gap="10px">
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("4")}
+            >
               4
             </Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("5")}
+            >
               5
             </Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("6")}
+            >
               6
             </Button>
           </Flex>
           <Flex gap="10px">
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("7")}
+            >
               7
             </Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("8")}
+            >
               8
             </Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("9")}
+            >
               9
             </Button>
           </Flex>
           <Flex gap="10px">
             <Button style={{ background: 0, width: "92px" }}></Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button
+              className={styles.button4}
+              colorScheme="blue"
+              onClick={() => handleButtonClick("0")}
+            >
               0
             </Button>
-            <Button className={styles.button4} colorScheme="blue">
+            <Button className={styles.button4} colorScheme="blue" onClick={() => handleDelete("")}>
               <Image src={backback} style={{ width: "22px", height: "22px" }} />
             </Button>
           </Flex>
