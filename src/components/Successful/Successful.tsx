@@ -35,7 +35,7 @@ export default function Successful() {
         gap="10px"
         mt="30px"
       >
-        <Image src={successful} style={{ padding: "30px" }} />
+        <Image src={successful} alt="successful" style={{ padding: "30px" }} />
 
         <Link href="/home">
           <Button

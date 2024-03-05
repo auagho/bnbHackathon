@@ -1,8 +1,13 @@
+import { useEffect, useState } from "react";
+
 import { Box, Flex } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import Image from "next/image";
+import { useAccount, useReadContract } from "wagmi";
 
+import { luxContractABI } from "@/contracts/luxContract";
+import { productContractABI } from "@/contracts/productContract";
 import styles from "@/styles/mainPane.module.css";
 
 import arrowsort from "../../assets/arrowsort.png";
@@ -11,6 +16,64 @@ import safebox from "../../assets/safebox01.png";
 import test from "../../assets/test.png";
 
 export default function MyStatus() {
+  const { address } = useAccount();
+  const [readyToSell, setReadyToSell] = useState(0);
+
+  const { data, error } = useReadContract({
+    abi: productContractABI,
+    address: `0x${process.env.NEXT_PUBLIC_PRODUCT_CONTRACT_ADDRESS}`,
+    functionName: "getProduct",
+    account: address,
+  });
+
+  const { data: luxData } = useReadContract({
+    abi: luxContractABI,
+    address: `0x${process.env.NEXT_PUBLIC_LUX_CONTRACT_ADDRESS}`,
+    functionName: "getUserTransactions",
+    args: [address],
+  });
+
+  const productData = data as string[] | undefined;
+  // const luxDataResult = luxData as string[] | undefined;
+
+  const transformLuxData = (luxData: number[]) => {
+    const transactions = [];
+    for (let i = 0; i < luxData?.length; i += 2) {
+      transactions.push({
+        amount: luxData[i],
+        timestamp: luxData[i + 1],
+      });
+    }
+    return transactions;
+  };
+  const luxTransactions = transformLuxData(luxData as number[]);
+  const received = luxTransactions.reduce((acc, transaction) => acc + transaction.amount, 0) % 1000;
+
+  console.log("Transformed luxData:", luxTransactions);
+  if (error) {
+    console.error("Error occurred during getProduct call:", error);
+  } else {
+    console.log("productData?.[0]:", productData?.[0]);
+  }
+
+  useEffect(() => {
+    if (productData?.[0]) {
+      fetch(`/api/getDatas?system_id=${productData?.[0]}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.data || data.data.length === 0) {
+            // err
+          } else {
+            console.log(data?.data);
+            setReadyToSell(data?.data?.length - received);
+          }
+        })
+        .catch((error) => {
+          console.error("Fetching data failed", error);
+        });
+    }
+  }, [productData]);
+
   return (
     <Box>
       <Flex justifyContent="center" pb="50px" alignItems="center">
@@ -28,28 +91,28 @@ export default function MyStatus() {
             <Flex gap="40px">
               <Flex flexDirection="column" style={{ textAlign: "center" }}>
                 <Flex justifyContent="center" flexDirection="column" alignItems="center" gap="3px">
-                  <CircularProgress value={20} color="#409CFF" capIsRound="true">
+                  <CircularProgress value={20} color="#409CFF" capIsRound={true}>
                     <CircularProgressLabel>
                       <Flex justifyContent="center">
-                        <Image src={safebox} />
+                        <Image src={safebox} alt="safebox" />
                       </Flex>
                     </CircularProgressLabel>
                   </CircularProgress>
-                  <p className={styles.myStatusText1}>1,000 LUX</p>
+                  <p className={styles.myStatusText1}>{received} LUX</p>
                   <p className={styles.myStatusText2}>Received</p>
                 </Flex>
               </Flex>
 
               <Flex flexDirection="column" style={{ textAlign: "center" }}>
                 <Flex justifyContent="center" flexDirection="column" alignItems="center" gap="3px">
-                  <CircularProgress value={75} color="#FF6961" capIsRound="true">
+                  <CircularProgress value={75} color="#FF6961" capIsRound={true}>
                     <CircularProgressLabel>
                       <Flex justifyContent="center">
-                        <Image src={money} />
+                        <Image src={money} alt="money" />
                       </Flex>
                     </CircularProgressLabel>
                   </CircularProgress>
-                  <p className={styles.myStatusText1}>500 LUX</p>
+                  <p className={styles.myStatusText1}>{readyToSell} LUX</p>
                   <p className={styles.myStatusText2}>Ready to Sell</p>
                 </Flex>
               </Flex>
@@ -80,7 +143,7 @@ export default function MyStatus() {
                   capIsRound={true}
                   trackColor="transparent"
                   layerStyle={{
-                    strokeDashoffset: 25,
+                    strokeDashoffset: "25",
                   }}
                 />
               </Box>
@@ -91,23 +154,29 @@ export default function MyStatus() {
       <Flex className={styles.container3} flexDirection="column" justifyContent="space-between">
         <Flex className={styles.myStatusText5} justifyContent="space-between">
           Recent Transactions
-          <Image src={arrowsort} />
+          <Image src={arrowsort} alt="arrowsort" />
         </Flex>
-        <Flex className={styles.myStatusContainer}>
-          <Flex>
-            <Image src={test} style={{ borderRadius: "20px" }} />
-          </Flex>
-          <Flex w="100%" flexDirection="column" alignItems="center" p="5px">
-            <Flex w="100%" justifyContent="space-between">
-              <Flex className={styles.myStatusText6}>LUX Received</Flex>
-              <Flex className={styles.myStatusText7}>+1000 LUX</Flex>
+        {luxTransactions &&
+          luxTransactions.length > 0 &&
+          luxTransactions.map((transaction, index) => (
+            <Flex key={index} className={styles.myStatusContainer}>
+              <Flex>
+                <Image src={test} alt="test" style={{ borderRadius: "20px" }} />
+              </Flex>
+              <Flex w="100%" flexDirection="column" alignItems="center" p="5px">
+                <Flex w="100%" justifyContent="space-between">
+                  <Flex className={styles.myStatusText6}>LUX Received</Flex>
+                  <Flex className={styles.myStatusText7}>+{`${transaction.amount}`} LUX</Flex>
+                </Flex>
+                <Flex w="100%" justifyContent="space-between">
+                  <Flex className={styles.myStatusText8}>
+                    {new Date(transaction.timestamp * 1000).toLocaleString("en-US")}
+                  </Flex>
+                  <Flex className={styles.myStatusText9}>Received</Flex>
+                </Flex>
+              </Flex>
             </Flex>
-            <Flex w="100%" justifyContent="space-between">
-              <Flex className={styles.myStatusText8}>Jan 28, 2023 08.00</Flex>
-              <Flex className={styles.myStatusText9}>Received</Flex>
-            </Flex>
-          </Flex>
-        </Flex>
+          ))}
       </Flex>
     </Box>
   );

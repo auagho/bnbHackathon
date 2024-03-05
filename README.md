@@ -9,7 +9,7 @@
 
 ## Description
 
-Lucia description
+Decentralized Real-Time Weather Casting System
 
 ## Built With
 
