@@ -3,13 +3,54 @@
 <img src="./public/img/logo_transparent.png" width="70px"/>
 <br>
 
-<h1><strong> Lucia </strong></h1>
+<h1><strong> Casper </strong></h1>
 
 </div>
 
 ## Description
 
-Decentralized Real-Time Weather Casting System
+### Casper: Decentralized Real-time Weather Forecasting
+
+Casper is a decentralized weather forecasting platform leveraging the power of community-sourced data and blockchain technology.
+
+Data Providers:
+
+- Use IoT devices to collect environmental data like temperature, humidity, and pressure.
+- Sell data to the platform and earn LUX tokens as rewards.
+
+Decentralized Network:
+
+- Collected data is anonymously aggregated and analyzed on the blockchain.
+- This eliminates central control and ensures data transparency.
+
+Real-time Forecasts:
+
+- Aggregated data enables the generation of highly accurate and localized weather forecasts.
+- Users access real-time information personalized for their location.
+
+Lucia empowers individuals to contribute to a more sustainable and community-driven weather forecasting system.
+
+Benefits:
+
+- Data providers: Earn rewards for contributing valuable data.
+- Users: Access accurate and reliable weather information.
+- Everyone: Contributes to a transparent and sustainable forecasting system.
+
+## Process
+
+1. Wallet Integration: Users integrate their wallets using web3.js, allowing them to manage their assets on the blockchain associated with their wallet address.
+
+2. Environmental Data Measurement and Update: IoT devices measure temperature, humidity, and CO2 levels, sending real-time data via MQTT protocol to update and store on the DB server.
+
+3. Serial Number Registration: Using Casper platform's contract, users register the serial numbers of IoT devices on the Binance Smart Chain (BSC) for identification.
+
+4. On-chain Device Information: Registered device information is securely recorded and managed on the blockchain through smart contracts.
+
+5. Environmental Data Evaluation and Token Exchange: Real-time environmental data fetched from the DB server is evaluated and converted into scores, then exchanged for LUX tokens via BSC contracts.
+
+6. Trading Service Preparation: Future services will enable users to trade using the LUX tokens they possess.
+
+This process enables users to manage real-time environmental data through their wallets and IoT devices, securely record it on the blockchain, and receive rewards accordingly.
 
 ## Built With
 
