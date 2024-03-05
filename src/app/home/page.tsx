@@ -1,4 +1,7 @@
 "use client";
+
+import { useEffect, useState } from "react";
+
 import { Box, Flex } from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount, useReadContract } from "wagmi";
@@ -8,6 +11,7 @@ import { productContractABI } from "@/contracts/productContract";
 
 export default function Home() {
   const { isConnected, address } = useAccount();
+  const [mainPaneData, setMainPaneData] = useState<any>();
 
   const { data, error, isLoading } = useReadContract({
     abi: productContractABI,
@@ -21,8 +25,25 @@ export default function Home() {
   if (error) {
     console.error("Error occurred during getProduct call:", error);
   } else {
-    console.log("productData", productData);
+    console.log("productData?.[0]:", productData?.[0]);
   }
+
+  useEffect(() => {
+    if (productData?.[0]) {
+      fetch(`/api/getData?system_id=${productData?.[0]}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.data || data.data.length === 0) {
+            // err
+          } else {
+            setMainPaneData(data.data[0]);
+          }
+        })
+        .catch((error) => {
+          console.error("Fetching data failed", error);
+        });
+    }
+  }, [productData]);
 
   return (
     <>
@@ -52,7 +73,7 @@ export default function Home() {
         <Header />
 
         <Box flex={1} p={4}>
-          <MainPane />
+          <MainPane data={mainPaneData} />
         </Box>
 
         <Footer />
