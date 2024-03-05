@@ -1,5 +1,5 @@
 // components/MainPane.tsx
-import { type FC } from "react";
+import { useState, type FC, useEffect } from "react";
 
 import { Box, Divider, Flex, Heading, useColorMode } from "@chakra-ui/react";
 import { useAccount } from "wagmi";
@@ -19,6 +19,16 @@ import {
 const MainPane: FC = () => {
   const { isConnected } = useAccount();
   const { colorMode } = useColorMode();
+  const [datas, setDatas] = useState<object[]>([]);
+
+  useEffect(() => {
+    fetch("/api/getData")
+      .then((response) => response.json())
+      .then((data) => {
+        setDatas(data.data);
+      })
+      .catch((error) => console.error("Fetching data failed", error));
+  }, []);
 
   return (
     <Box
@@ -28,6 +38,10 @@ const MainPane: FC = () => {
       <Heading as="h2" fontSize={"2rem"} mb={10} className="text-shadow">
         Display Info
       </Heading>
+
+      {datas.map((data: any, index: number) => {
+        return <div key={index}>{data.measure_dt}</div>;
+      })}
 
       <Flex className={styles.content}>
         <Status />
