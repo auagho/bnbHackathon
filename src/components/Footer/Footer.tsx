@@ -20,12 +20,22 @@ const Footer: FC = () => {
       <Flex justifyContent="center">
         <Flex gap={"10px"}>
           <Link href="/mystatus">
-            <Button className={styles.button1} colorScheme="teal" size="md">
+            <Button
+              className={styles.button1}
+              colorScheme="teal"
+              size="md"
+              _hover={{ bg: "#5250A8" }}
+            >
               My Status
             </Button>
           </Link>
           <Link href="/inputpad">
-            <Button className={styles.button2} colorScheme="teal" size="md">
+            <Button
+              className={styles.button2}
+              colorScheme="teal"
+              size="md"
+              _hover={{ bg: "#5250A8" }}
+            >
               Sell
             </Button>
           </Link>
