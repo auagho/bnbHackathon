@@ -1,9 +1,5 @@
 <div align="center">
-
-<img src="./public/img/logo_transparent.png" width="70px"/>
 <br>
-
-<h1><strong> Casper </strong></h1>
 
 ![photo_2024-03-06_08-43-40](https://github.com/auagho/bnbHackathon/assets/102646431/1df6ea93-4f84-47c7-a7b1-b2b1b4314796)
 
