@@ -19,7 +19,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const theme = extendTheme({ initialColorMode: "dark", useSystemColorMode: false });
 
   const appInfo = {
-    appName: "Next-Web3-Boilerplate",
+    appName: "Lucia",
   };
 
   return (
@@ -27,7 +27,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <QueryClientProvider client={queryClient}>
         <CacheProvider>
           <ChakraProvider resetCSS theme={theme}>
-            <RainbowKitProvider coolMode appInfo={appInfo}>
+            <RainbowKitProvider coolMode appInfo={appInfo} locale="en-US">
               {mounted && children}
             </RainbowKitProvider>
           </ChakraProvider>
