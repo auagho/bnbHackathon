@@ -39,7 +39,7 @@ export default function Inputpad() {
         </Flex>
       )}
 
-      {!productData?.length && !isLoading && <ConnectModal />}
+      {!productData?.length && !isLoading && isConnected && <ConnectModal />}
 
       <Flex
         flexDirection="column"
