@@ -19,9 +19,11 @@ const Footer: FC = () => {
       </Link> */}
       <Flex justifyContent="center">
         <Flex gap={"10px"}>
-          <Button className={styles.button1} colorScheme="teal" size="md">
-            My Status
-          </Button>
+          <Link href="/mystatus">
+            <Button className={styles.button1} colorScheme="teal" size="md">
+              My Status
+            </Button>
+          </Link>
           <Link href="/inputpad">
             <Button className={styles.button2} colorScheme="teal" size="md">
               Sell
